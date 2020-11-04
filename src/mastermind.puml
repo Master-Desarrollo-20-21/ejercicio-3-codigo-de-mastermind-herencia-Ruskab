@@ -1,0 +1,70 @@
+@startuml
+skinparam linetype polyline
+
+Class Mastermind {
+    + play()
+}
+
+Class Game {
+    + resume()
+    + close()
+    + presentActualAttempt()
+    + nextAttempt()
+}
+
+Class GamePresenter {
+    + printTittle()
+    + printAttemptsCount(int attemptsCount)
+    + printSecretCombinationHidden()
+    + printValidationFailedMessage(String message)
+    + printAttemptSummary(attempt)
+    + printWinMessage()
+    + printLoseMessage()
+}
+
+Class Attempt {
+    + readProposedCombination() : String
+    + checkProposedCombination(Combination secret)
+    + getWhites()
+    + getBlacks()
+    + isWinnerAttempt()
+    + isLoserAttempt()
+}
+
+Enum Color {
+    RED("r"),
+    BLUE("b"),
+    YELLOW("y"),
+    GREEN("g"),
+    ORANGE("o"),
+    PINK("p")
+
++ isValidColor(Char color)
+}
+
+Class Combination {
+    + generateRandom()
+    + isValidCombination(String combination)
+}
+
+
+Mastermind *--> Game
+Game --> GamePresenter
+Game *--> "1" Combination : secret
+Game *--> "10   " Attempt
+GamePresenter ..> IO.ConsoleWriter
+Attempt *--> Combination : proposed
+Combination o--> "4" Color
+Attempt ..> IO.ConsoleReader
+Attempt ..> Combination : secret
+
+namespace IO {
+    Class ConsoleReader {
+        + readLine()
+    }
+    Class ConsoleWriter {
+        + writeLine(string)
+    }
+
+}
+@enduml
