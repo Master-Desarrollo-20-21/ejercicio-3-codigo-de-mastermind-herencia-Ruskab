@@ -15,6 +15,12 @@ public class Mastermind {
             game.presentCurrentAttempt();
             game.nextAttempt();
         } while (game.isContinuePlaying());
+        if (game.isWinnerGame()) {
+            GamePresenter.printWinnerMessage();
+        } else {
+            GamePresenter.printLoseMessage();
+        }
+        //todo pending to do resume, new game
         game.close();
     }
 

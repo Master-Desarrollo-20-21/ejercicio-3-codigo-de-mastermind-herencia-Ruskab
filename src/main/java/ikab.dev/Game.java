@@ -31,6 +31,10 @@ public class Game {
         return attemptsCounter < 10 || !currentAttempt.isWinnerAttempt(secretCombination);
     }
 
+    public boolean isWinnerGame() {
+        return currentAttempt.isWinnerAttempt(secretCombination);
+    }
+
     public void close() {
 
     }

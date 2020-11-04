@@ -17,4 +17,12 @@ public class GamePresenter {
     public static void printAttemptTitle() {
         // todo print attempt interface
     }
+
+    public static void printWinnerMessage() {
+        // todo print win message
+    }
+
+    public static void printLoseMessage() {
+        // todo print lose message
+    }
 }
